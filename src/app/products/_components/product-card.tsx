@@ -1,10 +1,11 @@
-import { Star } from "lucide-react";
 import Image from "next/image";
 import { Product } from "../_lib/types";
+import Link from "next/link";
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
-    <div
+    <Link
+      href={`/products/${product.id}`}
       key={product.id}
       className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all hover:shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col h-full"
     >
@@ -27,29 +28,8 @@ export default function ProductCard({ product }: { product: Product }) {
             {product.title}
           </h2>
         </div>
-        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3 flex-grow">
-          {product.description}
-        </p>
         <div className="mt-auto">
-          <div className="flex items-center mb-2">
-            <div className="flex items-center">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className={`w-4 h-4 ${
-                    i < Math.floor(product.rating.rate)
-                      ? "text-yellow-400 fill-yellow-400"
-                      : i < product.rating.rate
-                      ? "text-yellow-400 fill-yellow-400 opacity-50"
-                      : "text-gray-300 dark:text-gray-600"
-                  }`}
-                />
-              ))}
-            </div>
-            <span className="ml-2 text-sm text-gray-600 dark:text-gray-300">
-              ({product.rating.rate}) - {product.rating.count} reviews
-            </span>
-          </div>
+          <div className="flex items-center mb-2"></div>
           <div className="flex items-center justify-between">
             <span className="text-xl font-bold text-gray-900 dark:text-white">
               ${product.price.toFixed(2)}
@@ -57,6 +37,6 @@ export default function ProductCard({ product }: { product: Product }) {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

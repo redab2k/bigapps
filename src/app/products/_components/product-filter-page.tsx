@@ -36,12 +36,12 @@ export default function ProductFilterPage({
   return (
     <div className="container mx-auto p-4">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
+        <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-800">
           Products
         </h1>
         <button
           onClick={toggleFilters}
-          className="md:hidden flex items-center gap-2 py-2 px-4 bg-gray-100 dark:bg-gray-700 rounded-lg"
+          className="md:hidden hover:cursor-pointer flex items-center gap-2 py-2 px-4 bg-gray-100 dark:bg-gray-400 rounded-lg"
         >
           <Filter size={18} />
           <span>Filters</span>
@@ -93,7 +93,7 @@ export default function ProductFilterPage({
           {(searchQuery || selectedCategory) && (
             <button
               onClick={clearFilters}
-              className="mt-4 md:mt-0 w-full md:w-auto py-2 px-4 bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-md hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors"
+              className="mt-4 hover:cursor-pointer md:mt-0 w-full md:w-auto py-2 px-4 bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-md hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors"
             >
               Clear Filters
             </button>
@@ -101,7 +101,7 @@ export default function ProductFilterPage({
         </div>
       </div>
 
-      <div className="mb-4 text-gray-600 dark:text-gray-300">
+      <div className="mb-4 text-gray-600 dark:text-gray-700">
         Showing {displayProducts.length}{" "}
         {displayProducts.length === 1 ? "product" : "products"}
         {selectedCategory && (

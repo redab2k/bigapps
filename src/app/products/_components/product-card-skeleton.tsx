@@ -10,23 +10,8 @@ export function ProductCardSkeleton() {
           <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded mb-1" />
           <div className="h-6 w-3/4 bg-gray-200 dark:bg-gray-700 rounded" />
         </div>
-        <div className="flex-grow my-4 space-y-2">
-          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded" />
-          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded" />
-          <div className="h-4 w-2/3 bg-gray-200 dark:bg-gray-700 rounded" />
-        </div>
+
         <div className="mt-auto">
-          <div className="flex items-center mb-2">
-            <div className="flex items-center space-x-1">
-              {[...Array(5)].map((_, i) => (
-                <div
-                  key={i}
-                  className="w-4 h-4 bg-gray-200 dark:bg-gray-700 rounded-full"
-                />
-              ))}
-            </div>
-            <div className="ml-2 w-24 h-4 bg-gray-200 dark:bg-gray-700 rounded" />
-          </div>
           <div className="flex items-center justify-between">
             <div className="w-16 h-6 bg-gray-200 dark:bg-gray-700 rounded" />
           </div>
