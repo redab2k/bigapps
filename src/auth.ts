@@ -40,6 +40,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               id: credentials.username,
               username: credentials.username,
               token: data.token,
+              name: credentials.username,
             } as AdaptedUser;
           }
           return null;

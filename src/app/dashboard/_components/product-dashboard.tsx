@@ -35,7 +35,7 @@ export default function ProductDashboard() {
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <CircleUserRound className="w-8 h-8 rounded-full object-cover" />
-            <span className="font-medium text-gray-700">{user?.id}</span>
+            <span className="font-medium text-gray-700">{user?.name}</span>
           </div>
           <button
             onClick={handleLogout}
