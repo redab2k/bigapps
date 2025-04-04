@@ -1,10 +1,10 @@
 "use server";
 import "server-only";
 import { productSchema } from "../schema/product-schema";
-import type { ActionResult, Product } from "@/app/products/_lib/types";
+import type { Product } from "@/app/products/_lib/types";
 import { API_URL } from "@/lib/utils/constants";
 
-export async function addProduct(formData: FormData): Promise<ActionResult> {
+export async function addProduct(formData: FormData) {
   try {
     const result = productSchema.safeParse(
       Object.fromEntries(formData.entries())
@@ -48,7 +48,7 @@ export async function addProduct(formData: FormData): Promise<ActionResult> {
   }
 }
 
-export async function updateProduct(formData: FormData): Promise<ActionResult> {
+export async function updateProduct(formData: FormData) {
   try {
     const result = productSchema.safeParse(
       Object.fromEntries(formData.entries())
@@ -92,7 +92,7 @@ export async function updateProduct(formData: FormData): Promise<ActionResult> {
   }
 }
 
-export async function deleteProduct(formData: FormData): Promise<ActionResult> {
+export async function deleteProduct(formData: FormData) {
   try {
     const id = formData.get("id");
 

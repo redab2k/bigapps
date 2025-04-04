@@ -1,7 +1,6 @@
 "use client";
 
 import type { Product } from "@/app/products/_lib/types";
-import { Star } from "lucide-react";
 import Image from "next/image";
 
 interface ProductTableProps {
@@ -15,39 +14,6 @@ export default function ProductTable({
   onEdit,
   onDelete,
 }: ProductTableProps) {
-  const renderStars = (rating: number) => {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.5;
-
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(
-        <Star
-          key={`full-${i}`}
-          className="w-4 h-4 text-yellow-400 fill-yellow-400"
-        />
-      );
-    }
-
-    if (hasHalfStar) {
-      stars.push(
-        <div key="half" className="relative">
-          <Star className="w-4 h-4 text-yellow-400" />
-          <div className="absolute inset-0 overflow-hidden w-1/2">
-            <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-          </div>
-        </div>
-      );
-    }
-
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-    for (let i = 0; i < emptyStars; i++) {
-      stars.push(<Star key={`empty-${i}`} className="w-4 h-4 text-gray-300" />);
-    }
-
-    return stars;
-  };
-
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200">
@@ -76,12 +42,6 @@ export default function ProductTable({
               className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell"
             >
               Category
-            </th>
-            <th
-              scope="col"
-              className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell"
-            >
-              Rating
             </th>
             <th
               scope="col"
@@ -126,16 +86,6 @@ export default function ProductTable({
                 <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                   {product.category}
                 </span>
-              </td>
-              <td className="px-4 py-4 whitespace-nowrap hidden lg:table-cell">
-                <div className="flex items-center">
-                  <div className="flex items-center">
-                    {renderStars(product.rating.rate)}
-                  </div>
-                  <div className="text-xs text-gray-500 ml-2">
-                    ({product.rating.count})
-                  </div>
-                </div>
               </td>
               <td className="px-4 py-4 whitespace-nowrap text-sm font-medium">
                 <button

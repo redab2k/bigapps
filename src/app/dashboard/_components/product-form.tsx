@@ -1,81 +1,29 @@
 "use client";
 
-import type { FormState, Product } from "@/app/products/_lib/types";
-import { useForm } from "react-hook-form";
-import {
-  type ProductFormData,
-  productSchema,
-} from "../_lib/schema/product-schema";
-import { zodResolver } from "@hookform/resolvers/zod";
+import type { Product } from "@/app/products/_lib/types";
+import { useProductHandler } from "../_lib/hooks/useProductHandler";
 
 type ProductFormProps = {
   product: Product | null;
-  formAction: (formData: FormData) => void;
-  formState: FormState;
+  onSubmit: (formData: FormData) => void;
+  error: string | null;
+  isPending: boolean;
   onCancel: () => void;
 };
 
 export default function ProductForm({
   product,
-  formAction,
-  formState,
+  onSubmit,
+  isPending,
   onCancel,
 }: ProductFormProps) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<ProductFormData>({
-    resolver: zodResolver(productSchema),
-    defaultValues: product
-      ? {
-          ...product,
-          rating: product.rating || { rate: 0, count: 0 },
-        }
-      : {
-          title: "",
-          price: 0,
-          description: "",
-          category: "men's clothing",
-          image: "",
-          rating: { rate: 0, count: 0 },
-        },
-  });
-
-  const onSubmit = (data: ProductFormData) => {
-    const formData = new FormData();
-
-    if (product) {
-      formData.append("id", product.id.toString());
-    } else {
-      formData.append("id", Math.floor(Math.random() * 1000).toString());
-    }
-
-    formData.append("title", data.title);
-    formData.append("price", data.price.toString());
-    formData.append("description", data.description);
-    formData.append("category", data.category);
-    formData.append("image", data.image);
-
-    if (!product) {
-      formData.append("rating.rate", "0");
-      formData.append("rating.count", "0");
-    } else {
-      formData.append("rating.rate", product.rating.rate.toString());
-      formData.append("rating.count", product.rating.count.toString());
-    }
-
-    formAction(formData);
-  };
+  const { handleSubmit, processSubmit, register, errors } = useProductHandler(
+    product,
+    onSubmit
+  );
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      {formState.error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-          {formState.error}
-        </div>
-      )}
-
+    <form onSubmit={handleSubmit(processSubmit)} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label
@@ -181,15 +129,43 @@ export default function ProductForm({
         <button
           type="button"
           onClick={onCancel}
-          className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-md text-gray-700 transition-colors"
+          disabled={isPending}
+          className="px-4 py-2 cursor-pointer bg-gray-200 hover:bg-gray-300 rounded-md text-gray-700 transition-colors"
         >
           Cancel
         </button>
         <button
           type="submit"
-          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
+          disabled={isPending}
+          className="px-4 py-2 cursor-pointer disabled:bg-gray-400 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
         >
-          {product ? "Update Product" : "Add Product"}
+          {isPending ? (
+            <span className="flex items-center justify-center">
+              <svg
+                className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              {product ? "Updating..." : "Adding..."}
+            </span>
+          ) : (
+            <>{product ? "Update Product" : "Add Product"}</>
+          )}
         </button>
       </div>
     </form>
