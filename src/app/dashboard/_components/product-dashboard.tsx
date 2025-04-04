@@ -31,7 +31,9 @@ export default function ProductDashboard() {
   return (
     <div className="max-w-7xl mx-auto p-6">
       <header className="flex justify-between items-center mb-8 bg-white p-4 rounded-lg shadow">
-        <h1 className="text-2xl font-bold text-gray-800">Product Dashboard</h1>
+        <h1 className="sm:text-2xl font-bold text-gray-800">
+          Product Dashboard
+        </h1>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <CircleUserRound className="w-8 h-8 rounded-full object-cover" />
