@@ -1,12 +1,11 @@
 "use client";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import {
   addProduct,
   deleteProduct,
   updateProduct,
 } from "../../_lib/actions/actions";
 import { getProducts } from "@/app/products/_lib/helpers";
-import { signOut } from "@/auth";
 import type { Product } from "@/app/products/_lib/types";
 import { useEffect, useState, useTransition } from "react";
 import { toast } from "sonner";
