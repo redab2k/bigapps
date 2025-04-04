@@ -4,6 +4,7 @@ import ProductTable from "./products-table";
 import ProductForm from "./product-form";
 import { useDashboardProducts } from "../_lib/hooks/useDashboardProducts";
 import { CircleUserRound, Loader2 } from "lucide-react";
+import ProductTableSkeleton from "./product-table-skeleton";
 
 export default function ProductDashboard() {
   const {
@@ -26,16 +27,6 @@ export default function ProductDashboard() {
     formError,
     isPending,
   } = useDashboardProducts();
-
-  if (loading) {
-    return (
-      <div className="max-w-7xl mx-auto p-6">
-        <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600"></div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="max-w-7xl mx-auto p-6">
@@ -72,9 +63,7 @@ export default function ProductDashboard() {
         </div>
 
         {loading ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600"></div>
-          </div>
+          <ProductTableSkeleton />
         ) : (
           <ProductTable
             products={products}
