@@ -2,6 +2,7 @@
 import { loginUser } from "@/lib/actions/auth";
 import { LoginFormValues, LoginSchema } from "@/lib/validation/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useActionState, useEffect, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -12,6 +13,7 @@ type FormData = {
 };
 
 export function useLogin() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [state, formAction] = useActionState(loginUser, {
@@ -36,8 +38,9 @@ export function useLogin() {
     }
     if (state.success) {
       toast.success("Logged in successfully!");
+      router.push("/");
     }
-  }, [state]);
+  }, [router, state]);
 
   const onSubmit = (data: FormData) => {
     const formData = new FormData();

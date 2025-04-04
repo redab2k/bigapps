@@ -2,7 +2,6 @@
 
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
-import { redirect } from "next/navigation";
 import { LoginSchema } from "../validation/auth";
 
 type LoginState = {
@@ -29,13 +28,20 @@ export async function loginUser(
   const { username, password } = validatedFields.data;
 
   try {
-    await signIn("credentials", {
+    const result = await signIn("credentials", {
       username,
       password,
       redirect: false,
     });
 
-    redirect("/");
+    if (result?.error) {
+      return {
+        error: "Invalid username or password",
+        success: false,
+      };
+    }
+
+    return { error: null, success: true };
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {

@@ -1,11 +1,11 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import type { User as CustomUser } from "./lib/types/types";
 import { User as AuthUser } from "@auth/core/types";
 
 type AdaptedUser = AuthUser & {
   username: string;
   email: string;
+  token: string;
 };
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -21,31 +21,27 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
 
         try {
-          const response = await fetch("https://fakestoreapi.com/users");
-          if (!response.ok) {
-            console.error(
-              "Failed to fetch users from fakestoreapi:",
-              response.status
-            );
-            return null;
+          const response = await fetch("https://fakestoreapi.com/auth/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              username: credentials.username,
+              password: credentials.password,
+            }),
+          });
+
+          const data = await response.json();
+
+          if (response.ok && data.token) {
+            return {
+              id: credentials.username,
+              username: credentials.username,
+              token: data.token,
+            } as AdaptedUser;
           }
-          const users: CustomUser[] = await response.json();
-
-          const user = users.find((u) => u.username === credentials.username);
-
-          if (user) {
-            const adaptedUser: AdaptedUser = {
-              id: String(user.id),
-              name: `${user.name.firstname} ${user.name.lastname}`,
-              email: user.email,
-              username: user.username,
-              image: null,
-            };
-
-            return adaptedUser;
-          } else {
-            return null;
-          }
+          return null;
         } catch (error) {
           console.error("Authorization error:", error);
           return null;
@@ -58,6 +54,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (user) {
         token.id = user.id ?? "";
         token.username = (user as AdaptedUser).username;
+        token.accessToken = (user as AdaptedUser).token;
       }
       return token;
     },
@@ -65,9 +62,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (session.user) {
         session.user.id = (token.id as string) ?? "";
         session.user.name = token.name as string;
+        session.user.accessToken = token.accessToken;
       }
       return session;
     },
+  },
+  pages: {
+    signIn: "/login",
   },
   session: {
     strategy: "jwt",
