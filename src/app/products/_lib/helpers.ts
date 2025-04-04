@@ -1,8 +1,9 @@
+import { API_URL } from "@/lib/utils/constants";
 import { Product } from "./types";
 
 export async function getProducts() {
   try {
-    const response = await fetch("https://fakestoreapi.com/products");
+    const response = await fetch(`${API_URL}/products`);
     const products: Product[] = await response.json();
     return products;
   } catch (error) {
@@ -13,9 +14,7 @@ export async function getProducts() {
 
 export async function getProductsByCategory(category: string) {
   try {
-    const response = await fetch(
-      `https://fakestoreapi.com/products/category/${category}`
-    );
+    const response = await fetch(`${API_URL}/products/category/${category}`);
     const products: Product[] = await response.json();
     return products;
   } catch (error) {
@@ -26,9 +25,7 @@ export async function getProductsByCategory(category: string) {
 
 export async function getCategories() {
   try {
-    const response = await fetch(
-      "https://fakestoreapi.com/products/categories"
-    );
+    const response = await fetch(`${API_URL}/products/categories`);
     const categories: string[] = await response.json();
     return categories;
   } catch (error) {
@@ -39,7 +36,7 @@ export async function getCategories() {
 
 export async function getProduct(id: string) {
   try {
-    const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const response = await fetch(`${API_URL}/products/${id}`);
     const product: Product = await response.json();
     return product;
   } catch (error) {

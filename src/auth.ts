@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { User as AuthUser } from "@auth/core/types";
+import { API_URL } from "./lib/utils/constants";
 
 type AdaptedUser = AuthUser & {
   username: string;
@@ -21,7 +22,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
 
         try {
-          const response = await fetch("https://fakestoreapi.com/auth/login", {
+          const response = await fetch(`${API_URL}/auth/login`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

@@ -10,3 +10,14 @@ export type Product = {
     count: number;
   };
 };
+
+export type FormState = {
+  success: boolean;
+  error: string | null;
+};
+
+export type ActionResult = {
+  success: boolean;
+  error?: string | null;
+  product?: Product;
+};

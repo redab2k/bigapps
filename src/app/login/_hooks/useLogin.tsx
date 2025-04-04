@@ -38,7 +38,7 @@ export function useLogin() {
     }
     if (state.success) {
       toast.success("Logged in successfully!");
-      router.push("/");
+      router.push("/dashboard");
     }
   }, [router, state]);
 
