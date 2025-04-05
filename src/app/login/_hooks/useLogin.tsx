@@ -39,6 +39,7 @@ export function useLogin() {
     if (state.success) {
       toast.success("Logged in successfully!");
       router.push("/dashboard");
+      router.refresh();
     }
   }, [router, state]);
 
