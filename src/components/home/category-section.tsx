@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "motion/react";
 
 const fadeIn = {
@@ -19,10 +18,14 @@ const stagger = {
 };
 
 const categories = [
-  { name: "Clothing", icon: "👕", link: "/products?category=clothing" },
-  { name: "Accessories", icon: "👜", link: "/products?category=accessories" },
-  { name: "Home & Living", icon: "🏠", link: "/products?category=home" },
   { name: "Electronics", icon: "📱", link: "/products?category=electronics" },
+  { name: "Jewelry", icon: "💍", link: "/products?category=accessories" },
+  { name: "Men's Clothing", icon: "👕", link: "/products?category=clothing" },
+  {
+    name: "Women's Clothing",
+    icon: "👗",
+    link: "/products?category=womens-clothing",
+  },
 ];
 
 export default function CategorySection() {
@@ -58,14 +61,12 @@ export default function CategorySection() {
               variants={fadeIn}
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
             >
-              <Link href={category.link} className="block">
-                <div className="bg-[#f2fdf5] rounded-lg p-6 text-center hover:shadow-md transition-shadow h-full flex flex-col items-center justify-center">
-                  <span className="text-4xl mb-4">{category.icon}</span>
-                  <h3 className="text-xl font-semibold text-gray-800">
-                    {category.name}
-                  </h3>
-                </div>
-              </Link>
+              <div className="bg-[#f2fdf5] rounded-lg p-6 text-center hover:shadow-md transition-shadow h-full flex flex-col items-center justify-center">
+                <span className="text-4xl mb-4">{category.icon}</span>
+                <h3 className="text-xl font-semibold text-gray-800">
+                  {category.name}
+                </h3>
+              </div>
             </motion.div>
           ))}
         </motion.div>

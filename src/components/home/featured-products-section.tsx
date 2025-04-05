@@ -21,28 +21,28 @@ const stagger = {
 
 const featuredProducts = [
   {
-    id: 1,
-    name: "Eco-friendly Water Bottle",
-    price: 24.99,
-    image: "/placeholder.svg?height=300&width=300",
+    id: 6,
+    name: "Solid Gold Petite Micropave",
+    price: 168,
+    image: "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
   },
   {
-    id: 2,
-    name: "Organic Cotton T-Shirt",
-    price: 29.99,
-    image: "/placeholder.svg?height=300&width=300",
+    id: 7,
+    name: "White Gold Plated Princess",
+    price: 9.99,
+    image: "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
   },
   {
     id: 3,
-    name: "Recycled Leather Wallet",
-    price: 49.99,
-    image: "/placeholder.svg?height=300&width=300",
+    name: "Mens Cotton Jacket",
+    price: 55.99,
+    image: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
   },
   {
     id: 4,
-    name: "Bamboo Sunglasses",
-    price: 79.99,
-    image: "/placeholder.svg?height=300&width=300",
+    name: "Mens Casual Slim Fit",
+    price: 15.99,
+    image: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
   },
 ];
 

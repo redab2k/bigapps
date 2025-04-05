@@ -30,7 +30,7 @@ export default function NewsletterSection() {
             <input
               type="email"
               placeholder="Your email address"
-              className="flex-grow px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-white"
+              className="flex-grow px-4 border border-white py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-white"
               required
             />
             <motion.button

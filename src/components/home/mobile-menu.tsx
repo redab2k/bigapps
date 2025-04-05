@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
+import { navLinks } from "./navLinks";
+import { cn } from "@/lib/utils/utils";
 
 type Props = {
   closeMenu: () => void;
@@ -16,41 +18,20 @@ export default function MobileMenu({ closeMenu }: Props) {
       className="md:hidden bg-white border-t"
     >
       <div className="container mx-auto px-4 py-2 flex flex-col space-y-3">
-        <Link
-          href="/products"
-          onClick={closeMenu}
-          className="text-gray-600 hover:text-[#4cd965] py-2 transition-colors"
-        >
-          Products
-        </Link>
-        <Link
-          href="/products?featured=true"
-          onClick={closeMenu}
-          className="text-gray-600 hover:text-[#4cd965] py-2 transition-colors"
-        >
-          Featured
-        </Link>
-        <Link
-          href="/products?sale=true"
-          onClick={closeMenu}
-          className="text-gray-600 hover:text-[#4cd965] py-2 transition-colors"
-        >
-          Sale
-        </Link>
-        <Link
-          href="/login"
-          onClick={closeMenu}
-          className="text-gray-600 hover:text-[#4cd965] py-2 transition-colors"
-        >
-          Login
-        </Link>
-        <Link
-          href="/dashboard"
-          onClick={closeMenu}
-          className="bg-[#4cd965] text-white px-4 py-2 rounded-md hover:bg-[#3cb954] transition-colors inline-block"
-        >
-          Dashboard
-        </Link>
+        {navLinks.map((link, index) => (
+          <Link
+            key={index}
+            href={link.href}
+            onClick={closeMenu}
+            className={cn(
+              "text-gray-600 hover:text-[#4cd965] py-2 transition-colors",
+              link.name === "Dashboard" &&
+                "bg-[#4cd965] text-white px-4 py-2 rounded-md hover:bg-[#3cb954]"
+            )}
+          >
+            {link.name}
+          </Link>
+        ))}
       </div>
     </motion.div>
   );

@@ -36,7 +36,7 @@ export default function HeroSection() {
               Shop Now
             </Link>
             <Link
-              href="/products?category=new"
+              href="/products"
               className="border-2 border-[#4cd965] text-[#4cd965] px-6 py-3 rounded-md text-lg font-medium hover:bg-[#f2fdf5] transition-colors text-center"
             >
               New Arrivals
@@ -53,7 +53,7 @@ export default function HeroSection() {
         >
           <div className="relative h-[300px] md:h-[400px] lg:h-[500px] w-full">
             <Image
-              src="/placeholder.svg?height=500&width=500"
+              src="/assets/home-page.png"
               alt="Eco-friendly products showcase"
               fill
               className="object-cover rounded-lg shadow-lg"
