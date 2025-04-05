@@ -35,6 +35,7 @@ export default function ProductForm({
           <input
             id="title"
             type="text"
+            placeholder="Title"
             {...register("title")}
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           />
@@ -53,7 +54,7 @@ export default function ProductForm({
           <input
             id="price"
             type="number"
-            step="0.01"
+            step="1"
             {...register("price")}
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           />
@@ -72,8 +73,9 @@ export default function ProductForm({
           <textarea
             id="description"
             rows={3}
+            placeholder="Description"
             {...register("description")}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 resize-none border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           />
           {errors.description && (
             <p className="mt-1 text-sm text-red-600">
@@ -116,6 +118,7 @@ export default function ProductForm({
           <input
             id="image"
             type="text"
+            placeholder="Image URL"
             {...register("image")}
             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           />

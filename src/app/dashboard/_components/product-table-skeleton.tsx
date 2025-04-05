@@ -1,5 +1,5 @@
 export default function ProductTableSkeleton() {
-  const skeletonRows = Array(5).fill(null);
+  const skeletonRows = Array(9).fill(null);
 
   return (
     <div className="overflow-x-auto">
