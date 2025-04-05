@@ -3,6 +3,7 @@ import ProductCard from "./product-card";
 import ProductFallback from "./product-fallback";
 import { Filter, Search, X } from "lucide-react";
 import type { Product } from "../_lib/types";
+import { cn } from "@/lib/utils/utils";
 
 type Props = {
   toggleFilters: () => void;
@@ -41,7 +42,7 @@ export default function ProductFilterPage({
         </h1>
         <button
           onClick={toggleFilters}
-          className="md:hidden hover:cursor-pointer flex items-center gap-2 py-2 px-4 bg-gray-100 dark:bg-gray-400 rounded-lg"
+          className="md:hidden hover:cursor-pointer flex items-center gap-2 py-2 px-4 bg-green-100 dark:bg-green-700 rounded-lg"
         >
           <Filter size={18} />
           <span>Filters</span>
@@ -49,28 +50,29 @@ export default function ProductFilterPage({
       </div>
 
       <div
-        className={`bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 mb-6 transition-all duration-300 ${
+        className={cn(
+          "bg-white dark:bg-green-900 rounded-lg shadow-md p-4 mb-6 transition-all duration-300",
           showFilters ? "block" : "hidden md:block"
-        }`}
+        )}
       >
         <div className="md:flex items-center gap-4">
           <div className="relative flex-grow mb-4 md:mb-0">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-5 w-5 text-gray-400" />
+              <Search className="h-5 w-5 text-green-400" />
             </div>
             <input
               type="text"
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder="Search by product title..."
-              className="pl-10 w-full py-2 px-4 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              className="pl-10 w-full py-2 px-4 border border-green-200 dark:border-green-600 rounded-md bg-white dark:bg-green-800 text-gray-900 dark:text-green-50"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
                 className="absolute inset-y-0 right-0 pr-3 flex items-center"
               >
-                <X className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                <X className="h-5 w-5 text-green-400 hover:text-green-600" />
               </button>
             )}
           </div>
@@ -79,7 +81,7 @@ export default function ProductFilterPage({
             <select
               value={selectedCategory}
               onChange={handleCategoryChange}
-              className="w-full py-2 px-4 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              className="w-full py-2 px-4 border border-green-200 dark:border-green-600 rounded-md bg-white dark:bg-green-800 text-gray-900 dark:text-green-50"
             >
               <option value="">All Categories</option>
               {categories.map((category) => (
@@ -93,7 +95,7 @@ export default function ProductFilterPage({
           {(searchQuery || selectedCategory) && (
             <button
               onClick={clearFilters}
-              className="mt-4 hover:cursor-pointer md:mt-0 w-full md:w-auto py-2 px-4 bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-md hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors"
+              className="mt-4 hover:cursor-pointer md:mt-0 w-full md:w-auto py-2 px-4 bg-green-200 dark:bg-green-700 text-green-800 dark:text-green-100 rounded-md hover:bg-green-300 dark:hover:bg-green-600 transition-colors"
             >
               Clear Filters
             </button>
@@ -101,7 +103,7 @@ export default function ProductFilterPage({
         </div>
       </div>
 
-      <div className="mb-4 text-gray-600 dark:text-gray-700">
+      <div className="mb-4 text-green-700 dark:text-green-300">
         Showing {displayProducts.length}{" "}
         {displayProducts.length === 1 ? "product" : "products"}
         {selectedCategory && (
@@ -127,13 +129,13 @@ export default function ProductFilterPage({
           ))}
         </div>
       ) : (
-        <div className="py-16 text-center bg-white dark:bg-gray-800 rounded-lg shadow">
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-4">
+        <div className="py-16 text-center bg-white dark:bg-green-900 rounded-lg shadow">
+          <p className="text-xl text-green-600 dark:text-green-300 mb-4">
             No products found
           </p>
           <button
             onClick={clearFilters}
-            className="py-2 px-6 hover:cursor-pointer bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+            className="py-2 px-6 hover:cursor-pointer bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors"
           >
             Reset Filters
           </button>
