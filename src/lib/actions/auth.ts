@@ -1,9 +1,8 @@
 "use server";
-
+import "server-only";
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 import { LoginSchema } from "../validation/auth";
-import "server-only";
 
 type LoginState = {
   error: string | null;

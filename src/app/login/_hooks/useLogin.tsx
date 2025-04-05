@@ -2,6 +2,7 @@
 import { loginUser } from "@/lib/actions/auth";
 import { LoginFormValues, LoginSchema } from "@/lib/validation/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useActionState, useEffect, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
@@ -33,15 +34,17 @@ export function useLogin() {
   });
 
   useEffect(() => {
-    if (state.error) {
-      toast.error(state.error);
+    async function updateAfterLogin() {
+      if (state.success) {
+        toast.success("Logged in successfully!");
+        await getSession();
+        router.push("/dashboard");
+        router.refresh();
+      }
     }
-    if (state.success) {
-      toast.success("Logged in successfully!");
-      router.push("/dashboard");
-      router.refresh();
-    }
-  }, [router, state]);
+
+    updateAfterLogin();
+  }, [state, router]);
 
   const onSubmit = (data: FormData) => {
     const formData = new FormData();
