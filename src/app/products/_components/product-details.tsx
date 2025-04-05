@@ -13,7 +13,7 @@ export default function ProductDetails({ product }: { product: Product }) {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 flex items-center justify-center border border-gray-200 dark:border-gray-700">
+        <div className="bg-white dark:bg-green-800 rounded-lg p-6 flex items-center justify-center border border-gray-200 dark:border-gray-700">
           <Image
             src={product.image || "/placeholder.svg"}
             alt={product.title}
@@ -25,7 +25,7 @@ export default function ProductDetails({ product }: { product: Product }) {
         </div>
 
         <div className="flex flex-col">
-          <span className="inline-block px-3 py-1 text-sm font-semibold rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 mb-4 w-fit">
+          <span className="inline-block px-3 py-1 text-sm font-semibold rounded-full bg-green-100 dark:bg-green-700 text-green-800 dark:text-green-200 mb-4 w-fit">
             {product.category}
           </span>
 
@@ -87,7 +87,7 @@ export default function ProductDetails({ product }: { product: Product }) {
             className={cn(
               "py-4 px-1 font-medium hover:cursor-pointer text-sm border-b-2",
               activeTab === "description"
-                ? "border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400"
+                ? "border-green-500 text-green-500 dark:text-green-400 dark:border-green-400"
                 : "border-transparent text-gray-500 dark:text-gray-800 hover:text-gray-700 dark:hover:text-gray-300"
             )}
           >
@@ -98,7 +98,7 @@ export default function ProductDetails({ product }: { product: Product }) {
             className={cn(
               "py-4 px-1 font-medium hover:cursor-pointer text-sm border-b-2",
               activeTab === "reviews"
-                ? "border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400"
+                ? "border-green-500 text-green-500 dark:text-green-400 dark:border-green-400"
                 : "border-transparent text-gray-500 dark:text-gray-800 hover:text-gray-700 dark:hover:text-gray-300"
             )}
           >
@@ -107,7 +107,7 @@ export default function ProductDetails({ product }: { product: Product }) {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+      <div className="bg-white dark:bg-green-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
         {activeTab === "description" ? (
           <div className="prose dark:prose-invert max-w-none">
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
@@ -124,7 +124,7 @@ export default function ProductDetails({ product }: { product: Product }) {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-              <div className="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 p-6 rounded-lg">
+              <div className="flex flex-col items-center justify-center bg-green-50 dark:bg-green-900 p-6 rounded-lg">
                 <div className="text-5xl font-bold text-gray-900 dark:text-white mb-2">
                   {product.rating.rate}
                 </div>

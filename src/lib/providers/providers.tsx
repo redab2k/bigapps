@@ -1,12 +1,12 @@
 import { Toaster } from "sonner";
 import { AuthProvider } from "./auth-provider";
-import Header from "@/components/home/header";
 import Footer from "@/components/home/footer";
+import Navbar from "@/components/home/navbar";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <AuthProvider>
-      <Header />
+      <Navbar />
       <Toaster position="top-right" richColors closeButton />
       {children}
       <Footer />

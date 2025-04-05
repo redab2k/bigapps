@@ -20,10 +20,7 @@ export default function LoginForm() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-4">
           <div className="grid gap-2">
-            <label
-              htmlFor="username"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="username" className="block text-sm font-medium">
               Username
             </label>
             <input
@@ -35,7 +32,7 @@ export default function LoginForm() {
               autoCorrect="off"
               disabled={isPending}
               className={cn(
-                "block w-full rounded-md border px-3 py-2 text-sm placeholder-gray-400 shadow-sm focus:outline-none focus:ring-1 focus:ring-gray-500 disabled:cursor-not-allowed disabled:opacity-50",
+                "block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50",
                 errors.username &&
                   "border-red-500 focus:border-red-500 focus:ring-red-500"
               )}
@@ -47,10 +44,7 @@ export default function LoginForm() {
           </div>
           <div className="grid gap-2">
             <div className="flex items-center justify-between">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="password" className="block text-sm font-medium">
                 Password
               </label>
             </div>
@@ -64,7 +58,7 @@ export default function LoginForm() {
                 autoCorrect="off"
                 disabled={isPending}
                 className={cn(
-                  "block w-full rounded-md border px-3 py-2 text-sm placeholder-gray-400 shadow-sm focus:outline-none focus:ring-1 focus:ring-gray-500 disabled:cursor-not-allowed disabled:opacity-50",
+                  "block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50",
                   errors.password &&
                     "border-red-500 focus:border-red-500 focus:ring-red-500"
                 )}
@@ -72,7 +66,7 @@ export default function LoginForm() {
               />
               <button
                 type="button"
-                className="absolute hover:cursor-pointer right-0 top-0 h-full px-3 py-2 text-gray-400 hover:text-gray-600"
+                className="absolute hover:cursor-pointer right-0 top-0 h-full px-3 py-2 text-green-400 hover:text-green-600"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? (
@@ -92,7 +86,7 @@ export default function LoginForm() {
           <button
             type="submit"
             disabled={isPending}
-            className="inline-flex gap-4 disabled:bg-gray-600 hover:cursor-pointer items-center justify-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex gap-4 disabled:bg-green-300 hover:cursor-pointer items-center justify-center rounded-md bg-[#4cd965] px-4 py-2 text-sm font-medium text-white hover:bg-[#3ab954] focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isPending && <Loader2 className="size-4 animate-spin" />}
             Sign in

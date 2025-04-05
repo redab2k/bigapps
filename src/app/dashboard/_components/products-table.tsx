@@ -73,7 +73,7 @@ export default function ProductTable({
                 <div className="text-sm text-gray-900 sm:hidden mt-1">
                   ${product.price.toFixed(2)}
                 </div>
-                <span className="inline-flex sm:hidden text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 px-2 py-1 mt-1">
+                <span className="inline-flex sm:hidden text-xs leading-5 font-semibold rounded-full bg-[#e3f9e8] text-[#2a9d42] px-2 py-1 mt-1">
                   {product.category}
                 </span>
               </td>
@@ -83,14 +83,14 @@ export default function ProductTable({
                 </div>
               </td>
               <td className="px-4 py-4 whitespace-nowrap hidden md:table-cell">
-                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-[#e3f9e8] text-[#2a9d42]">
                   {product.category}
                 </span>
               </td>
               <td className="px-4 py-4 whitespace-nowrap text-sm font-medium">
                 <button
                   onClick={() => onEdit(product)}
-                  className="text-indigo-600 hover:text-indigo-900 mr-4 cursor-pointer"
+                  className="text-[#3ab853] hover:text-[#2a9d42] mr-4 cursor-pointer"
                 >
                   Edit
                 </button>

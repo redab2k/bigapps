@@ -3,7 +3,7 @@
 import ProductTable from "./products-table";
 import ProductForm from "./product-form";
 import { useDashboardProducts } from "../_lib/hooks/useDashboardProducts";
-import { CircleUserRound, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import ProductTableSkeleton from "./product-table-skeleton";
 
 export default function ProductDashboard() {
@@ -15,8 +15,6 @@ export default function ProductDashboard() {
     deletingProductId,
     handleEdit,
     handleDelete,
-    handleLogout,
-    user,
     setIsAddingProduct,
     setEditingProduct,
     setDeletingProductId,
@@ -34,18 +32,6 @@ export default function ProductDashboard() {
         <h1 className="sm:text-2xl font-bold text-gray-800">
           Product Dashboard
         </h1>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <CircleUserRound className="w-8 h-8 rounded-full object-cover" />
-            <span className="font-medium text-gray-700">{user?.name}</span>
-          </div>
-          <button
-            onClick={handleLogout}
-            className="px-4 py-2 bg-gray-200 cursor-pointer hover:bg-gray-300 rounded-md text-gray-700 transition-colors"
-          >
-            Logout
-          </button>
-        </div>
       </header>
 
       <main className="bg-white rounded-lg shadow p-6">
@@ -57,7 +43,7 @@ export default function ProductDashboard() {
               setEditingProduct(null);
               setFormError(null);
             }}
-            className="px-4 py-2 disabled:bg-gray-400 bg-blue-600 cursor-pointer hover:bg-blue-700 text-white rounded-md transition-colors"
+            className="px-4 py-2 disabled:bg-gray-400 bg-[#4cd965] cursor-pointer hover:bg-[#3ab853] text-white rounded-md transition-colors"
             disabled={isPending}
           >
             Add Product

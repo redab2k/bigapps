@@ -38,7 +38,7 @@ export default function ProductForm({
             type="text"
             placeholder="Title"
             {...register("title")}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#4cd965] focus:border-[#4cd965]"
           />
           {errors.title && (
             <p className="mt-1 text-sm text-red-600">{errors.title.message}</p>
@@ -57,7 +57,7 @@ export default function ProductForm({
             type="number"
             step="1"
             {...register("price")}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#4cd965] focus:border-[#4cd965]"
           />
           {errors.price && (
             <p className="mt-1 text-sm text-red-600">{errors.price.message}</p>
@@ -76,7 +76,7 @@ export default function ProductForm({
             rows={3}
             placeholder="Description"
             {...register("description")}
-            className="w-full px-3 py-2 resize-none border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 resize-none border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#4cd965] focus:border-[#4cd965]"
           />
           {errors.description && (
             <p className="mt-1 text-sm text-red-600">
@@ -95,7 +95,7 @@ export default function ProductForm({
           <select
             id="category"
             {...register("category")}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#4cd965] focus:border-[#4cd965]"
           >
             <option value="men's clothing">Men&apos;s Clothing</option>
             <option value="women's clothing">Women&apos;s Clothing</option>
@@ -121,7 +121,7 @@ export default function ProductForm({
             type="text"
             placeholder="Image URL"
             {...register("image")}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#4cd965] focus:border-[#4cd965]"
           />
           {errors.image && (
             <p className="mt-1 text-sm text-red-600">{errors.image.message}</p>
@@ -141,7 +141,7 @@ export default function ProductForm({
         <button
           type="submit"
           disabled={isPending}
-          className="px-4 py-2 cursor-pointer disabled:bg-gray-400 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
+          className="px-4 py-2 cursor-pointer disabled:bg-gray-400 bg-[#4cd965] hover:bg-[#3ab853] text-white rounded-md transition-colors"
         >
           {isPending ? (
             <span className="flex items-center justify-center">
