@@ -40,6 +40,11 @@ export function useDashboardProducts() {
   }, []);
 
   const handleAddProduct = async (formData: FormData) => {
+    if (!user) {
+      toast.error("You must be logged in to add a product");
+      return;
+    }
+
     setFormError(null);
 
     startTransition(async () => {
@@ -65,6 +70,11 @@ export function useDashboardProducts() {
   };
 
   const handleUpdateProduct = async (formData: FormData) => {
+    if (!user) {
+      toast.error("You must be logged in to update a product");
+      return;
+    }
+
     setFormError(null);
 
     startTransition(async () => {
@@ -94,6 +104,11 @@ export function useDashboardProducts() {
   };
 
   const handleDeleteProduct = async (formData: FormData) => {
+    if (!user) {
+      toast.error("You must be logged in to delete a product");
+      return;
+    }
+
     const id = Number(formData.get("id"));
 
     startTransition(async () => {

@@ -3,9 +3,19 @@ import "server-only";
 import { productSchema } from "../schema/product-schema";
 import type { Product } from "@/app/products/_lib/types";
 import { API_URL } from "@/lib/utils/constants";
+import { auth } from "@/auth";
 
 export async function addProduct(formData: FormData) {
   try {
+    const session = await auth();
+
+    if (!session?.user) {
+      return {
+        success: false,
+        error: "You must be logged in to add a product",
+      };
+    }
+
     const result = productSchema.safeParse(
       Object.fromEntries(formData.entries())
     );
@@ -50,6 +60,15 @@ export async function addProduct(formData: FormData) {
 
 export async function updateProduct(formData: FormData) {
   try {
+    const session = await auth();
+
+    if (!session?.user) {
+      return {
+        success: false,
+        error: "You must be logged in to update a product",
+      };
+    }
+
     const result = productSchema.safeParse(
       Object.fromEntries(formData.entries())
     );
@@ -94,9 +113,18 @@ export async function updateProduct(formData: FormData) {
 
 export async function deleteProduct(formData: FormData) {
   try {
+    const session = await auth();
+
+    if (!session?.user) {
+      return {
+        success: false,
+        error: "You must be logged in to delete a product",
+      };
+    }
+
     const id = formData.get("id");
 
-    if (!id || isNaN(Number(id))) {
+    if (!id) {
       return { success: false, error: "Invalid product ID" };
     }
 

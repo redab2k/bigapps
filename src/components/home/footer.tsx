@@ -1,25 +1,11 @@
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 import Link from "next/link";
 
-type FooterLinkProps = {
-  href: string;
-  children: React.ReactNode;
-};
-
 type SocialIconProps = {
   href: string;
   Icon: React.FC<React.SVGProps<SVGSVGElement>>;
   alt: string;
 };
-
-const FooterLink = ({ href, children }: FooterLinkProps) => (
-  <Link
-    href={href}
-    className="text-gray-400 hover:text-[#4cd965] transition-colors"
-  >
-    {children}
-  </Link>
-);
 
 const SocialIcon = ({ href, Icon, alt }: SocialIconProps) => (
   <a
@@ -53,25 +39,27 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Shop</h3>
             <ul className="space-y-2">
-              {["All Products", "Featured", "Sale", "New Arrivals"].map(
-                (item, idx) => (
-                  <li key={idx}>
-                    <FooterLink href="/products">{item}</FooterLink>
-                  </li>
-                )
-              )}
+              <li>
+                <Link
+                  href="/products"
+                  className="text-gray-400 hover:text-[#4cd965] transition-colors"
+                >
+                  All Products
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-4">Account</h3>
             <ul className="space-y-2">
-              {["Login", "Dashboard"].map((item, idx) => (
-                <li key={idx}>
-                  <FooterLink href={`/${item.toLowerCase()}`}>
-                    {item}
-                  </FooterLink>
-                </li>
-              ))}
+              <li>
+                <Link
+                  href="/login"
+                  className="text-gray-400 hover:text-[#4cd965] transition-colors"
+                >
+                  Login
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
